@@ -1,0 +1,233 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "Social App",
+        "_postman_id": "5aa8fb68-9e5c-4b42-99e7-9af7c84f9832",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "All Posts",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/posts",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/posts"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Shows all posts",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"status\": \"success\",\"posts\": [{\"id\": 4,\"user_id\": 10,\"text\": \"Good Evening!\",\"created_at\": \"2023-10-09T08:21:34.000000Z\",\"updated_at\": \"2023-10-09T08:22:25.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create Post",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/posts",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/posts"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":12,\"text\":\"eius\"}"
+                        },
+                        "description": "Creates a post",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Post added successfully\",\"post\":[{\"id\":4,\"user_id\":10,\"text\":\"Good Evening!\",\"created_at\":\"2023-10-09T08:21:34.000000Z\",\"updated_at\":\"2023-10-09T08:22:25.000000Z\"},{\"id\":5,\"user_id\":3,\"text\":\"Good Morning!\",\"created_at\":\"2023-10-10T01:08:30.000000Z\",\"updated_at\":\"2023-10-10T01:08:30.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Find Post",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/post\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/post\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "12",
+                                    "description": "post ID"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Find post by ID",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"status\":\"success\",\"post\":{\"id\":4,\"user_id\":10,\"text\":\"Good Evening!\",\"created_at\":\"2023-10-09T08:21:34.000000Z\",\"updated_at\":\"2023-10-09T08:22:25.000000Z\"}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update Post",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/post\/:id\/update",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/post\/:id\/update",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "12",
+                                    "description": "ID of post."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_id\":15,\"text\":\"vobpe\"}"
+                        },
+                        "description": "update post by ID",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Post updated successfully\",\"post\":{\"id\":4,\"user_id\":\"10\",\"text\":\"Good Evening!\",\"created_at\":\"2023-10-09T08:21:34.000000Z\",\"updated_at\":\"2023-10-09T08:22:25.000000Z\"}}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete Post",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/post\/:id\/delete",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/post\/:id\/delete",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "15",
+                                    "description": "ID of post."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Deletes post by ID",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"message\":\"Post deleted successfully\",\"remaining posts\":[{\"id\":5,\"user_id\":3,\"text\":\"Good Morning!\",\"created_at\":\"2023-10-10T01:08:30.000000Z\",\"updated_at\":\"2023-10-10T01:08:30.000000Z\"},{\"id\":6,\"user_id\":3,\"text\":\"Good Morning!\",\"created_at\":\"2023-10-10T01:20:08.000000Z\",\"updated_at\":\"2023-10-10T01:20:08.000000Z\"}]}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

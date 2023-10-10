@@ -1,0 +1,359 @@
+openapi: 3.0.3
+info:
+  title: 'Social App'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/posts:
+    get:
+      summary: 'All Posts'
+      operationId: allPosts
+      description: 'Shows all posts'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: success
+                  posts:
+                    -
+                      id: 4
+                      user_id: 10
+                      text: 'Good Evening!'
+                      created_at: '2023-10-09T08:21:34.000000Z'
+                      updated_at: '2023-10-09T08:22:25.000000Z'
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  posts:
+                    type: array
+                    example:
+                      -
+                        id: 4
+                        user_id: 10
+                        text: 'Good Evening!'
+                        created_at: '2023-10-09T08:21:34.000000Z'
+                        updated_at: '2023-10-09T08:22:25.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 4
+                        user_id:
+                          type: integer
+                          example: 10
+                        text:
+                          type: string
+                          example: 'Good Evening!'
+                        created_at:
+                          type: string
+                          example: '2023-10-09T08:21:34.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2023-10-09T08:22:25.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Create Post'
+      operationId: createPost
+      description: 'Creates a post'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Post added successfully'
+                  post:
+                    -
+                      id: 4
+                      user_id: 10
+                      text: 'Good Evening!'
+                      created_at: '2023-10-09T08:21:34.000000Z'
+                      updated_at: '2023-10-09T08:22:25.000000Z'
+                    -
+                      id: 5
+                      user_id: 3
+                      text: 'Good Morning!'
+                      created_at: '2023-10-10T01:08:30.000000Z'
+                      updated_at: '2023-10-10T01:08:30.000000Z'
+                properties:
+                  message:
+                    type: string
+                    example: 'Post added successfully'
+                  post:
+                    type: array
+                    example:
+                      -
+                        id: 4
+                        user_id: 10
+                        text: 'Good Evening!'
+                        created_at: '2023-10-09T08:21:34.000000Z'
+                        updated_at: '2023-10-09T08:22:25.000000Z'
+                      -
+                        id: 5
+                        user_id: 3
+                        text: 'Good Morning!'
+                        created_at: '2023-10-10T01:08:30.000000Z'
+                        updated_at: '2023-10-10T01:08:30.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 4
+                        user_id:
+                          type: integer
+                          example: 10
+                        text:
+                          type: string
+                          example: 'Good Evening!'
+                        created_at:
+                          type: string
+                          example: '2023-10-09T08:21:34.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2023-10-09T08:22:25.000000Z'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: user_id
+                  example: 12
+                text:
+                  type: string
+                  description: text
+                  example: eius
+              required:
+                - user_id
+                - text
+      security: []
+  '/api/post/{id}':
+    get:
+      summary: 'Find Post'
+      operationId: findPost
+      description: 'Find post by ID'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: success
+                  post:
+                    id: 4
+                    user_id: 10
+                    text: 'Good Evening!'
+                    created_at: '2023-10-09T08:21:34.000000Z'
+                    updated_at: '2023-10-09T08:22:25.000000Z'
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  post:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 4
+                      user_id:
+                        type: integer
+                        example: 10
+                      text:
+                        type: string
+                        example: 'Good Evening!'
+                      created_at:
+                        type: string
+                        example: '2023-10-09T08:21:34.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-10-09T08:22:25.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'post ID'
+        example: 12
+        required: true
+        schema:
+          type: integer
+  '/api/post/{id}/update':
+    post:
+      summary: 'Update Post'
+      operationId: updatePost
+      description: 'update post by ID'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Post updated successfully'
+                  post:
+                    id: 4
+                    user_id: '10'
+                    text: 'Good Evening!'
+                    created_at: '2023-10-09T08:21:34.000000Z'
+                    updated_at: '2023-10-09T08:22:25.000000Z'
+                properties:
+                  message:
+                    type: string
+                    example: 'Post updated successfully'
+                  post:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 4
+                      user_id:
+                        type: string
+                        example: '10'
+                      text:
+                        type: string
+                        example: 'Good Evening!'
+                      created_at:
+                        type: string
+                        example: '2023-10-09T08:21:34.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-10-09T08:22:25.000000Z'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: ''
+                  example: 15
+                text:
+                  type: string
+                  description: 'Must not be greater than 166 characters.'
+                  example: vobpe
+              required:
+                - user_id
+                - text
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'ID of post.'
+        example: 12
+        required: true
+        schema:
+          type: integer
+  '/api/post/{id}/delete':
+    delete:
+      summary: 'Delete Post'
+      operationId: deletePost
+      description: 'Deletes post by ID'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Post deleted successfully'
+                  'remaining posts':
+                    -
+                      id: 5
+                      user_id: 3
+                      text: 'Good Morning!'
+                      created_at: '2023-10-10T01:08:30.000000Z'
+                      updated_at: '2023-10-10T01:08:30.000000Z'
+                    -
+                      id: 6
+                      user_id: 3
+                      text: 'Good Morning!'
+                      created_at: '2023-10-10T01:20:08.000000Z'
+                      updated_at: '2023-10-10T01:20:08.000000Z'
+                properties:
+                  message:
+                    type: string
+                    example: 'Post deleted successfully'
+                  'remaining posts':
+                    type: array
+                    example:
+                      -
+                        id: 5
+                        user_id: 3
+                        text: 'Good Morning!'
+                        created_at: '2023-10-10T01:08:30.000000Z'
+                        updated_at: '2023-10-10T01:08:30.000000Z'
+                      -
+                        id: 6
+                        user_id: 3
+                        text: 'Good Morning!'
+                        created_at: '2023-10-10T01:20:08.000000Z'
+                        updated_at: '2023-10-10T01:20:08.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 5
+                        user_id:
+                          type: integer
+                          example: 3
+                        text:
+                          type: string
+                          example: 'Good Morning!'
+                        created_at:
+                          type: string
+                          example: '2023-10-10T01:08:30.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2023-10-10T01:08:30.000000Z'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'ID of post.'
+        example: 15
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
